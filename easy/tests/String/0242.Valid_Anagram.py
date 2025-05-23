@@ -37,31 +37,24 @@ from collections import Counter
 
 @dataclass
 class Solution(object):
-    # def isAnagram(self, s, t):
-    #     if len(s) != len(t):
-    #         return False
-    #     return Counter(s) == Counter(t)
-
     def isAnagram(self, s, t):
+        counter = {}
         if len(s) != len(t):
             return False
-        s_counter = {}
-        for sch in s:
-            if sch in s_counter:
-                s_counter[sch] += 1
+        for schar in s:
+            if schar not in counter:
+                counter[schar] = 1
             else:
-                s_counter[sch] = 1
-        for tch in t:
-            if tch not in s_counter:
+                counter[schar] += 1
+        for tchar in t:
+            if tchar not in counter:
                 return False
-            elif s_counter[tch] <= 0:
-                s_counter.pop(tch)
             else:
-                s_counter[tch] -= 1
-
-
-        return not s_counter
-
+                if counter[tchar] == 0:
+                    return False
+                else:
+                    counter[tchar] -= 1
+        return counter
 import unittest
 
 
@@ -72,6 +65,12 @@ class SolutionTestCase(unittest.TestCase):
         self.assertEqual(self.solution.isAnagram("anagram", "nagaram"), True)
 
     def test_example_2_leetcode(self):
+        self.assertEqual(self.solution.isAnagram("rat", "car"), False)
+
+    def test_example_3_leetcode(self):
+        self.assertEqual(self.solution.isAnagram("anagram", "nagaram"), True)
+
+    def test_example_4_leetcode(self):
         self.assertEqual(self.solution.isAnagram("rat", "car"), False)
 
 if __name__ == "__main__":

@@ -12,8 +12,6 @@ the same forward and backward. Alphanumeric characters include letters and numbe
 
 Given a string s, return true if it is a palindrome, or false otherwise.
 
- 
-
 Example 1:
 
 Input: s = "A man, a plan, a canal: Panama"
@@ -45,23 +43,7 @@ from dataclasses import dataclass
 @dataclass
 class Solution(object):
     def isPalindrome(self, s: str):
-        """
-        """
-        left_index = 0
-        right_index = len(s) - 1
-        while left_index <= right_index:
-            if not s[left_index].isalpha():
-                left_index += 1
-                continue
-            elif not s[right_index].isalpha():
-                right_index -= 1
-                continue
-            else:
-                if s[left_index].lower() != s[right_index].lower():
-                    return False
-            left_index += 1
-            right_index -= 1                
-        return True
+        # ogolnie spoko problem z indexem
 
 
 import unittest

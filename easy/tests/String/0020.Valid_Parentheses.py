@@ -1,4 +1,6 @@
 """
+https://leetcode.com/problems/valid-parentheses/description/
+
 20. Valid Parentheses
 Easy
 Topics
@@ -49,13 +51,15 @@ from dataclasses import dataclass
 @dataclass
 class Solution(object):
     def isValid(self, s):
-        ...
-
+        # moze byc lepiej
 import unittest
 
 
 class TwoSumTestCase(unittest.TestCase):
     solution = Solution()
+    # def test_example_1_leetcode_isValid(self):
+    #     self.assertEqual(self.solution.isValid(s="()"), True)
+
     def test_example_1_leetcode_isValid(self):
         self.assertEqual(self.solution.isValid(s="()"), True)
     def test_example_2_leetcode_isValid(self):

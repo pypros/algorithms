@@ -37,8 +37,29 @@ from collections import Counter
 
 @dataclass
 class Solution(object):
+    # def isAnagram(self, s, t):
+    #     if len(s) != len(t):
+    #         return False
+    #     return Counter(s) == Counter(t)
+
     def isAnagram(self, s, t):
-        ...
+        if len(s) != len(t):
+            return False
+        s_counter = {}
+        for sch in s:
+            if sch in s_counter:
+                s_counter[sch] += 1
+            else:
+                s_counter[sch] = 1
+        for tch in t:
+            if tch not in s_counter:
+                return False
+            elif s_counter[tch] == 0:
+                return False
+            else:
+                s_counter[tch] -= 1
+
+        return not s_counter
 
 import unittest
 

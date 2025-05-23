@@ -1,4 +1,6 @@
 """
+https://leetcode.com/problems/two-sum/description/
+
 1. Two Sum
 #Easy #Topics #Companies #Hint
 
@@ -41,19 +43,54 @@ from dataclasses import dataclass
 
 @dataclass
 class Solution(object):
-    def twoSumGetNPow2(self, nums, target):
+    def twoSumSlideBrutalForce(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        This solution was create because test case prepared on Leetcode are very bad.
+        Time: O(n^2)
+        Space: O(1)
+        """
+        # umiem
         ...
-        
-
+    
     def twoSumOnlyCheckIfExist(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        This solution was create because I saw a lot of solution on the Internet which request only return true or false
+        Time: O(n)
+        Space: O(n)
+        """
+        # umiem
         ...
 
-
-    def twoSumOnlyCheckIfExistReturnIndexes(self, nums, target):
+    def twoSumGetIndexes(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        Expected solution.
+        Time: O(n)
+        Space: O(n)
+        """
+        # umiem
         ...
 
     def twoSumGetNlogN(self, nums, target):
-        ... # byl problem
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        Expected solution.
+        Time: O(nlogn)
+        Space: O(1)
+        """
+        # bylo lepiej ale dalej jest nad czym pracowac
+        # umiem
+        ...
 
 
 import unittest
@@ -62,21 +99,17 @@ import unittest
 class TwoSumTestCase(unittest.TestCase):
     solution = Solution()
 
-    def test_example_one_leetcode_twoSumGetNPow2(self):
-        self.assertEqual(self.solution.twoSumGetNPow2(nums=[2, 7, 11, 15], target=9), [0, 1])
+    # def test_example_one_leetcode_twoSumWrong(self):
+    #     self.assertEqual(self.solution.twoSumSlideBrutalForce(nums=[2, 7, 11, 15], target=9), [0, 1])
 
-    def test_example_two_leetcode_twoSumGetNPow2(self):
-        self.assertEqual(self.solution.twoSumGetNPow2(nums=[3, 2, 4], target=6), [1, 2])
+    # def test_example_two_leetcode_twoSumWrong(self):
+    #     self.assertEqual(self.solution.twoSumSlideBrutalForce(nums=[3, 2, 4], target=6), [1, 2])
 
-    def test_example_three_leetcode_twoSumGetNPow2(self):
-        self.assertEqual(self.solution.twoSumGetNPow2(nums=[3, 3], target=6), [0, 1])
+    # def test_example_three_leetcode_twoSumWrong(self):
+    #     self.assertEqual(self.solution.twoSumSlideBrutalForce(nums=[3, 3], target=6), [0, 1])
 
-    def test_example_four_leetcode_twoSumGetNPow2(self):
-        self.assertEqual(self.solution.twoSumGetNPow2(nums=[3,3,3], target=5), [])
-
-    def test_example_five_leetcode_twoSumGetNPow2(self):
-        self.assertEqual(self.solution.twoSumGetNPow2(nums=[3, 5, -4, 8, 11, 1, -1, 6], target=10), [4,6])
-
+    # def test_example_four_leetcode_twoSumWrong(self):
+    #     self.assertEqual(self.solution.twoSumSlideBrutalForce(nums=[3,3,3], target=5), [])
 
     def test_example_one_leetcode_twoSumOnlyCheckIfExist(self):
         self.assertEqual(self.solution.twoSumOnlyCheckIfExist(nums=[2, 7, 11, 15], target=9), True)
@@ -90,20 +123,20 @@ class TwoSumTestCase(unittest.TestCase):
     def test_example_four_leetcode_twoSumOnlyCheckIfExist(self):
         self.assertEqual(self.solution.twoSumOnlyCheckIfExist(nums=[3,3,3], target=5), False)
 
-    def test_example_one_leetcode_twoSumOnlyCheckIfExistReturnIndexes(self):
-        self.assertEqual(self.solution.twoSumOnlyCheckIfExistReturnIndexes(nums=[2, 7, 11, 15], target=9), [0, 1])
+    def test_example_one_leetcode_twoSumGetIndexes(self):
+        self.assertEqual(self.solution.twoSumGetIndexes(nums=[2, 7, 11, 15], target=9), [0, 1])
 
-    def test_example_two_leetcode_twoSumOnlyCheckIfExistReturnIndexes(self):
-        self.assertEqual(self.solution.twoSumOnlyCheckIfExistReturnIndexes(nums=[3, 2, 4], target=6), [1, 2])
+    def test_example_two_leetcode_twoSumGetIndexes(self):
+        self.assertEqual(self.solution.twoSumGetIndexes(nums=[3, 2, 4], target=6), [1, 2])
 
-    def test_example_three_leetcode_twoSumOnlyCheckIfExistReturnIndexes(self):
-        self.assertEqual(self.solution.twoSumOnlyCheckIfExistReturnIndexes(nums=[3, 3], target=6), [0, 1])
+    def test_example_three_leetcode_twoSumGetIndexes(self):
+        self.assertEqual(self.solution.twoSumGetIndexes(nums=[3, 3], target=6), [0, 1])
 
-    def test_example_four_leetcode_twoSumOnlyCheckIfExistReturnIndexes(self):
-        self.assertEqual(self.solution.twoSumOnlyCheckIfExistReturnIndexes(nums=[3,3,3], target=5), [])
+    def test_example_four_leetcode_twoSumGetIndexes(self):
+        self.assertEqual(self.solution.twoSumGetIndexes(nums=[3,3,3], target=5), [])
 
-    def test_example_five_leetcode_twoSumOnlyCheckIfExistReturnIndexes(self):
-        self.assertEqual(self.solution.twoSumOnlyCheckIfExistReturnIndexes(nums=[3, 5, -4, 8, 11, 1, -1, 6], target=10), [4,6])
+    def test_example_five_leetcode_twoSumGetIndexes(self):
+        self.assertEqual(self.solution.twoSumGetIndexes(nums=[3, 5, -4, 8, 11, 1, -1, 6], target=10), [4,6])
 
     def test_example_one_leetcode_twoSumGetNlogN(self):
         self.assertEqual(self.solution.twoSumGetNlogN(nums=[2, 7, 11, 15], target=9), True)

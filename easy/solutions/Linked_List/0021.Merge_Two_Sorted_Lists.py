@@ -47,26 +47,19 @@ from dataclasses import dataclass
 class Solution:
     # def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
     #     ...
-    #     head = ListNode()
-    #     current = head
-    #     while list1 and list2:
-    #         if list1.val == None and list2.val == None:
-    #             break
-    #         elif list1.val != None and list2.val == None:
-    #             current.next = list1
-    #             list1 = list1.next
-    #         elif list1.val == None and list2.val != None:
-    #             current.next = list2
-    #             list2 = list2.next
-    #         elif list1.val > list2.val:
-    #             current.next = list1
-    #             list1 = list1.next
-    #         else:
-    #             current.next = list2
-    #             list2 = list2.next
-    #         current = current.next
-    #     current.next = list1 or list2
-    #     return head.next
+        # dummy_head = ListNode()
+        # current = dummy_head
+        # while list1 and list2:
+        #     if list1.val < list2.val:
+        #         current.next = list1
+        #         list1 = list1.next
+        #     else:
+        #         current.next = list2
+        #         list2 = list2.next
+        #     current = current.next
+
+        # current.next = list1 or list2 
+        # return dummy_head.next
     def mergeTwoLists(
         self,
         list1: ListNode | None,
@@ -93,33 +86,42 @@ class SolutionTestCase(unittest.TestCase):
             if current.val is not None:
                 result.append(current.val)
             current = current.next
-        return list(reversed(result))
+        return result
      
     def test_example_1_leetcode(self):
-        list_1_node_1 = ListNode(1)
-        list_1_node_2 = ListNode(2, list_1_node_1)
-        list_1_node_3 = ListNode(4, list_1_node_2)
-        list_1 = list_1_node_3
+        list_1_node_0 = ListNode(1)
+        list_1_node_1 = ListNode(2)
+        list_1_node_2 = ListNode(4)
+        
+        list_1_node_0.next = list_1_node_1
+        list_1_node_1.next = list_1_node_2
 
-        list_2_node_1 = ListNode(1)
-        list_2_node_2 = ListNode(3, list_2_node_1)
-        list_2_node_3 = ListNode(4, list_2_node_2)
-        list_2 = list_2_node_3
+        head_list_1 = list_1_node_0
+        list_1 = head_list_1
+
+        list_2_node_0 = ListNode(1)
+        list_2_node_1 = ListNode(3)
+        list_2_node_2 = ListNode(4)
+
+        list_2_node_0.next = list_2_node_1
+        list_2_node_1.next = list_2_node_2
+
+        head_list_2 = list_2_node_0
+        list_2 = head_list_2
 
         merged_two_lists = self.solution.mergeTwoLists(list_1, list_2)
         result = self._convert_linked_list_to_list(merged_two_lists)
         self.assertEqual(result, [1,1,2,3,4,4])
 
     def test_example_2_leetcode(self):
-        list_1 = ListNode(val=None)
-        list_2 = ListNode(val=None)
-
+        list_1 = None
+        list_2 = None
         merged_two_lists = self.solution.mergeTwoLists(list_1, list_2)
         result = self._convert_linked_list_to_list(merged_two_lists)
         self.assertEqual(result, [])
 
     def test_example_3_leetcode(self):
-        list_1 = ListNode(val=None)
+        list_1 = None
         list_2 = ListNode(val=0)
 
         merged_two_lists = self.solution.mergeTwoLists(list_1, list_2)
@@ -129,7 +131,7 @@ class SolutionTestCase(unittest.TestCase):
 
     def test_example_4_leetcode(self):
         list_1 = ListNode(val=0)
-        list_2 = ListNode(val=None)
+        list_2 = None
 
         merged_two_lists = self.solution.mergeTwoLists(list_1, list_2)
 
@@ -137,15 +139,25 @@ class SolutionTestCase(unittest.TestCase):
         self.assertEqual(result, [0])
 
     def test_example_5_leetcode(self):
-        list_1_node_1 = ListNode(2)
-        list_1_node_2 = ListNode(4, list_1_node_1)
-        list_1_node_3 = ListNode(6, list_1_node_2)
-        list_1 = list_1_node_3
+        list_1_node_0 = ListNode(2)
+        list_1_node_1 = ListNode(4)
+        list_1_node_2 = ListNode(6)
 
-        list_2_node_1 = ListNode(1)
-        list_2_node_2 = ListNode(3, list_2_node_1)
-        list_2_node_3 = ListNode(5, list_2_node_2)
-        list_2 = list_2_node_3
+        list_1_node_0.next = list_1_node_1
+        list_1_node_1.next = list_1_node_2
+
+        head_list_1 = list_1_node_0
+        list_1 = head_list_1
+
+        list_2_node_0 = ListNode(1)
+        list_2_node_1 = ListNode(3)
+        list_2_node_2 = ListNode(5)
+
+        list_2_node_0.next = list_2_node_1
+        list_2_node_1.next = list_2_node_2
+
+        head_list_2 = list_2_node_0
+        list_2 = head_list_2
 
         merged_two_lists = self.solution.mergeTwoLists(list_1, list_2)
         result = self._convert_linked_list_to_list(merged_two_lists)
